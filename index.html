@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Tutoriel Interactif RDM</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            max-width: 800px; 
+            margin: 0 auto; 
+            padding: 20px; 
+        }
+        .section { 
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        h2 { 
+            color: #2c3e50; 
+            border-bottom: 2px solid #3498db; 
+            padding-bottom: 10px; 
+        }
+        img { 
+            max-width: 100%; 
+            height: auto; 
+            margin: 15px 0; 
+            border-radius: 5px; 
+        }
+        .formula { 
+            background: #f8f9fa;
+            padding: 15px;
+            margin: 10px 0;
+            border-left: 4px solid #8e44ad;
+            font-family: monospace;
+            font-size: 1.4em;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        .formula-explanation {
+            font-family: Arial;
+            font-size: 0.9em;
+            color: #666;
+            line-height: 1.6;
+        }
+        button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px 0;
+        }
+        .correction {
+            display: none;
+            background: #f1f8ff;
+            padding: 15px;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+        .important { 
+            color: #c0392b; 
+            font-weight: bold; 
+        }
+        .image-caption {
+            font-size: 0.9em;
+            color: #666;
+            text-align: center;
+            margin-top: -10px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Tutoriel Interactif de RDM</h1>
+	<h2 style="color: #e74c3c; text-align: center;">M.BLORFAN 2025</h2>
+
+    <!-- Section 1 : Traction -->
+    <div class="section">
+        <h2>1. Traction Simple</h2>
+        <img src="images/1.png">
+        <p class="image-caption">
+            Fig. 1 - Barre soumise à une force de traction F. Allongement ΔL visible en rouge.
+        </p>
+        
+        <div class="formula">
+            <div>
+                σ = F/S<br>
+                ΔL = (F·L)/(E·S)
+            </div>
+            <div class="formula-explanation">
+                <p><strong>Signification des termes :</strong></p>
+                <p>σ (sigma) : Contrainte normale [MPa]<br>
+                F : Force axiale [N]<br>
+                S : Section transversale [mm²]<br>
+                ΔL : Allongement [mm]<br>
+                L : Longueur initiale [mm]<br>
+                E : Module d'Young [MPa]</p>
+            </div>
+        </div>
+
+        <h3>Exercice</h3>
+        <p>Une barre en acier (E=210 GPa) de section 100 mm² subit une force de 50 kN.</p>
+        
+        <button onclick="toggleCorrection(1)">Voir correction</button>
+        <div id="correction1" class="correction">
+            <p>Calcul de la contrainte :</p>
+            <p>σ = 50 000 N / 100 mm² = 500 MPa</p>
+            <p class="important">Attention à la limite élastique !</p>
+        </div>
+    </div>
+
+    <!-- Section 2 : Cisaillement -->
+    <div class="section">
+        <h2>2. Cisaillement Pur</h2>
+        <img src="images/2.png">
+        <p class="image-caption">
+            Fig. 2 - Glissement des sections dû aux forces de cisaillement F (flèches bleues).
+        </p>
+        
+        <div class="formula">
+            <div>
+                τ = F/S<br>
+                γ = τ/G
+            </div>
+            <div class="formula-explanation">
+                <p><strong>Signification des termes :</strong></p>
+                <p>τ (tau) : Contrainte tangentielle [MPa]<br>
+                F : Force de cisaillement [N]<br>
+                S : Section cisaillée [mm²]<br>
+                γ (gamma) : Dérformation angulaire [rad]<br>
+                G : Module de cisaillement [MPa]</p>
+            </div>
+        </div>
+
+        <h3>Exercice</h3>
+        <p>Un boulon de 10 mm de diamètre subit un cisaillement de 15 kN (G=80 GPa).</p>
+        
+        <button onclick="toggleCorrection(2)">Voir correction</button>
+        <div id="correction2" class="correction">
+            <p>Section : π×(5)² = 78.5 mm²</p>
+            <p>τ = 15 000 N / 78.5 mm² = 191 MPa</p>
+        </div>
+    </div>
+
+    <!-- Section 3 : Flexion -->
+    <div class="section">
+        <h2>3. Flexion Simple</h2>
+        <img src="images/3.png">
+        <p class="image-caption">
+            Fig. 3 - Flexion d'une poutre : compression en haut (rouge) et traction en bas (vert).
+        </p>
+        
+        <div class="formula">
+            <div>
+                σ = (M·y)/I<br>
+                I = (b·h³)/12
+            </div>
+            <div class="formula-explanation">
+                <p><strong>Signification des termes :</strong></p>
+                <p>σ (sigma) : Contrainte normale [MPa]<br>
+                M : Moment fléchissant [N·mm]<br>
+                y : Distance à la fibre neutre [mm]<br>
+                I : Moment quadratique [mm⁴]<br>
+                b : Largeur section [mm]<br>
+                h : Hauteur section [mm]</p>
+            </div>
+        </div>
+
+        <h3>Exercice</h3>
+        <p>Poutre en bois (100x200 mm, E=10 GPa) avec M=5 kN·m.</p>
+        
+        <button onclick="toggleCorrection(3)">Voir correction</button>
+        <div id="correction3" class="correction">
+            <p>I = (100×200³)/12 = 66.7×10⁶ mm⁴</p>
+            <p>σ = (5×10⁶ Nmm × 100 mm)/66.7×10⁶ = 7.5 MPa</p>
+        </div>
+    </div>
+
+    <script>
+        function toggleCorrection(sectionNumber) {
+            const correction = document.getElementById(`correction${sectionNumber}`);
+            correction.style.display = correction.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
+
+    <footer style="margin-top: 40px; text-align: center; color: #666;">
+        <p>Images sources : Wikimedia Commons</p>
+        <p> © Copyright  M.BLORFAN 2025 </p>
+   
+    </footer>
+</body>
+</html>
